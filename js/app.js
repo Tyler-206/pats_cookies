@@ -16,66 +16,95 @@ Store.prototype.getCustomers = function(){
 Store.prototype.cookiesSold = function(){
   return Math.round(this.getCustomers() * this.cookieAverage);
 };
+var parentElement = document.getElementById('sales');
 
-var store1 = new Store ('First And Pike', 6.3,['6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],23,65);
-console.log(store1);
-render (store1);
+var article = document.createElement('article');
+parentElement.append(article);
 
-var store2 = new Store ('SeaTac Airport', 1.2,['6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],3,24);
-console.log(store2);
-render (store2);
+var table = document.createElement('table');
 
-var store3 = new Store ('Seattle Center', 3.7,['6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],11,38);
-console.log(store3);
-render (store3);
+var row = document.createElement('tr');
 
-var store4 = new Store ('Capital Hill', 2.3,['6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],20,38);
-console.log(store4);
-render (store4);
+table.appendChild(row);
+var store1 = new Store ('First And Pike', 6.3,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],23,65);
+render(store1);
 
-var store5 = new Store ('Alki', 4.6,['6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],2,16);
-console.log(store5);
-render (store5);
+var store2 = new Store ('SeaTac Airport', 1.2,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],3,24);
+render(store2);
+
+var store3 = new Store ('Seattle Center', 3.7,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],11,38);
+render(store3);
+
+var store4 = new Store ('Capital Hill', 2.3,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],20,38);
+render(store4);
+
+var store5 = new Store ('Alki', 4.6,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],2,16);
+render(store5);
 
 
 function randomCustomers (minCookie,maxCookie) {
   return Math.floor(Math.random() * (maxCookie - minCookie + 1) + minCookie);
 };
 
-function render (Store) {
-  var parentElement = document.getElementById('sales');
 
-  var article = document.createElement('article');
-  parentElement.append(article);
 
-  var h2 = document.createElement('h2');
-  h2.textContent = 'Pats Cookies Sales';
-  article.appendChild(h2);
 
-  var p = document.createElement('p');
-  p.textContent = 'Sales by hour for the each store:';
-  article.appendChild(p);
-
-  var ul = document.createElement('ul');
-  article.appendChild(ul);
-
-  var totalCookies = 0;
-
-  for (var i = 0; i < Store.hoursOpen.length; i++) {
-    var li = document.createElement ('li');
-    li.textContent = Store.hoursOpen [i] + ': ' + Store.cookiesSold() + ' cookies';
-    (totalCookies += Store.cookiesSold());
-    ul.appendChild(li);
-  }
-  li.textContent = 'Total: ' + totalCookies + ' cookies';
-
+for (var x = 0; x < store1.hoursOpen.length; x++) {
+  var th = document.createElement ('th');
+  th.textContent = store1.hoursOpen [x] ;
+  row.appendChild(th);
 };
 
-// //salmon image
-// var img = document.createElement('img');
-// img.setAttribute('src', 'images/salmon.png');
-// img.setAttribute('alt', 'cute picture of a salmon');
-// article.appendChild(img);
+
+article.append(table);
+
+function render (Store) {
+  console.log(Store);
+
+  var storeRow = document.createElement('tr');
+  var td = document.createElement ('td');
+
+  td.textContent = Store.name;
+  storeRow.appendChild(td);
+
+  var totalCookies = 0;
+  for (var i = 0; i < Store.hoursOpen.length; i++) {
+    td = document.createElement ('td');
+    td.textContent = Store.cookiesSold();
+    (totalCookies += Store.cookiesSold());
+    storeRow.appendChild(td);
+    table.appendChild(storeRow);
+  }
+  td.textContent = 'Total: ' + totalCookies;
+
+};
+  // var h2 = document.createElement('h2');
+  // h2.textContent = 'Pats Cookies Sales';
+  // article.appendChild(h2);
+  //
+  // var p = document.createElement('p');
+  // p.textContent = 'Sales by hour for the each store:';
+  // article.appendChild(p);
+  //
+  // var ul = document.createElement('ul');
+  // article.appendChild(ul);
+  //
+  // var totalCookies = 0;
+  //
+  // for (var i = 0; i < Store.hoursOpen.length; i++) {
+  //   var li = document.createElement ('li');
+  //   li.textContent = Store.hoursOpen [i] + ': ' + Store.cookiesSold() + ' cookies';
+  //   (totalCookies += Store.cookiesSold());
+  //   ul.appendChild(li);
+  // }
+  // li.textContent = 'Total: ' + totalCookies + ' cookies';
+// };
+
+//salmon image
+var img = document.createElement('img');
+img.setAttribute('src', 'images/salmon.png');
+img.setAttribute('alt', 'cute picture of a salmon');
+article.appendChild(img);
 
 // var parentTable = document.getElementById('table1');
 //
