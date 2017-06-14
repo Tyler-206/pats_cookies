@@ -16,6 +16,13 @@ Store.prototype.getCustomers = function(){
 Store.prototype.cookiesSold = function(){
   return Math.round(this.getCustomers() * this.cookieAverage);
 };
+
+
+
+
+
+
+
 var parentElement = document.getElementById('sales');
 
 var article = document.createElement('article');
@@ -40,24 +47,23 @@ render(store4);
 
 var store5 = new Store ('Alki', 4.6,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],2,16);
 render(store5);
-
-
+//random customer generator function
 function randomCustomers (minCookie,maxCookie) {
   return Math.floor(Math.random() * (maxCookie - minCookie + 1) + minCookie);
 };
-
-
-
-
+//Creates hours row of table using array from store1
 for (var x = 0; x < store1.hoursOpen.length; x++) {
   var th = document.createElement ('th');
   th.textContent = store1.hoursOpen [x] ;
   row.appendChild(th);
 };
 
-
 article.append(table);
 
+//adding form input elements in new rows to the existing table
+
+
+//this is the render for the remaining rows of the table
 function render (Store) {
   console.log(Store);
 
