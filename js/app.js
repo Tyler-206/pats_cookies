@@ -78,81 +78,10 @@ function render (Store) {
   td.textContent = 'Total: ' + totalCookies;
 
 };
-  // var h2 = document.createElement('h2');
-  // h2.textContent = 'Pats Cookies Sales';
-  // article.appendChild(h2);
-  //
-  // var p = document.createElement('p');
-  // p.textContent = 'Sales by hour for the each store:';
-  // article.appendChild(p);
-  //
-  // var ul = document.createElement('ul');
-  // article.appendChild(ul);
-  //
-  // var totalCookies = 0;
-  //
-  // for (var i = 0; i < Store.hoursOpen.length; i++) {
-  //   var li = document.createElement ('li');
-  //   li.textContent = Store.hoursOpen [i] + ': ' + Store.cookiesSold() + ' cookies';
-  //   (totalCookies += Store.cookiesSold());
-  //   ul.appendChild(li);
-  // }
-  // li.textContent = 'Total: ' + totalCookies + ' cookies';
-// };
+
 
 //salmon image
 var img = document.createElement('img');
 img.setAttribute('src', 'images/salmon.png');
 img.setAttribute('alt', 'cute picture of a salmon');
 article.appendChild(img);
-
-// var parentTable = document.getElementById('table1');
-//
-// var table = document.createElement('table');
-//
-// var row1 = document.createElement('tr');
-// var row2 = document.createElement('tr');
-// var row3 = document.createElement('tr');
-// var row4 = document.createElement('tr');
-// var row5 = document.createElement('tr');
-// var row6 = document.createElement('tr');
-// var row7 = document.createElement('tr');
-// var row8 = document.createElement('tr');
-// var row9 = document.createElement('tr');
-// var row10 = document.createElement('tr');
-// var row11 = document.createElement('tr');
-// var row12 = document.createElement('tr');
-// var row13 = document.createElement('tr');
-// var row14 = document.createElement('tr');
-// var row15 = document.createElement('tr');
-//
-// var th1 = document.createElement('th');
-// th1.textContent = 'Time of day';
-// var th2 = document.createElement('th');
-// th1.textContent = store1.name;
-// var th3 = document.createElement('th');
-// th2.textContent = store2.name;
-// var th4 = document.createElement('th');
-// th3.textContent = store3.name;
-// var th5 = document.createElement('th');
-// th4.textContent = store4.name;
-// var th6 = document.createElement('th');
-// th5.textContent = store5.name;
-//
-// for (var c = 0; c < store1.hoursOpen.length; c++) {
-//   var td = document.createElement ('td');
-//   td.textContent = store1.hoursOpen [c] ;
-// };
-// row1.appendChild(th1);
-// row1.appendChild(th2);
-// row1.appendChild(th3);
-// row1.appendChild(th4);
-// row1.appendChild(th5);
-// row1.appendChild(th6);
-//
-// row2.appendChild(td);
-//
-// table.appendChild(row1);
-// table.appendChild(row2);
-//
-// parentTable.appendChild(table);
