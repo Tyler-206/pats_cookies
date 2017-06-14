@@ -83,6 +83,7 @@ img.setAttribute('src', 'images/salmon.png');
 img.setAttribute('alt', 'cute picture of a salmon');
 article.appendChild(img);
 
+//for verifying whether store name is already in use in the table
 var storeNames = ['alki', 'first and pike', 'seatac airport', 'capital hill', 'seattle center'];
 
 var cookieCruncher = document.getElementById('addCookieCruncher');
@@ -99,7 +100,6 @@ function (event) {
   var newStore = new Store (name, cookieAverage, hoursOpen, minCookie, maxCookie);
 
   if (storeNames.includes(name.toLowerCase())){
-  // if (storeNames.indexOf(name.toLowerCase()) != -1) {
     cookieCruncher.reset();
     alert ('You cannot enter an existing store name!');
   } else {
