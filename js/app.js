@@ -1,7 +1,6 @@
 'use strict';
 
 function Store (name, cookieAverage, hoursOpen, minCookie, maxCookie) {
-  // this is a capital K kitten becuase its a construction function
   this.name = name;
   this.cookieAverage = cookieAverage;
   this.hoursOpen = hoursOpen;
@@ -32,6 +31,9 @@ var table = document.createElement('table');
 var row = document.createElement('tr');
 
 table.appendChild(row);
+
+var tableHeader = ['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm', 'Total'];
+
 var store1 = new Store ('First And Pike', 6.3,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],23,65);
 render(store1);
 
@@ -46,18 +48,27 @@ render(store4);
 
 var store5 = new Store ('Alki', 4.6,['','6am','7am','8am', '9am', '10am','11am', '12pm', '1pm','2pm', '3pm', '4pm','5pm', '6pm', '7pm','8pm'],2,16);
 render(store5);
-//Creates hours row of table using array from store1
-for (var x = 0; x < store1.hoursOpen.length; x++) {
-  var th = document.createElement ('th');
-  th.textContent = store1.hoursOpen [x] ;
-  row.appendChild(th);
+
+
+//Creates hours row of table using array from header array
+function createHeader() {
+
+  for (var x = 0; x < tableHeader.length; x++) {
+    var th = document.createElement ('th');
+    th.textContent = tableHeader [x] ;
+    row.appendChild(th);
+  };
 };
+
+createHeader();
 
 article.append(table);
 
 //this is the render for the remaining rows of the table
 function render (Store) {
   console.log(Store);
+  console.log(typeof minCookie);
+
 
   var storeRow = document.createElement('tr');
   var td = document.createElement ('td');
@@ -73,7 +84,7 @@ function render (Store) {
     storeRow.appendChild(td);
     table.appendChild(storeRow);
   }
-  td.textContent = 'Total: ' + totalCookies;
+  td.textContent = totalCookies;
 
 };
 
@@ -87,7 +98,8 @@ article.appendChild(img);
 var storeNames = ['alki', 'first and pike', 'seatac airport', 'capital hill', 'seattle center'];
 
 var cookieCruncher = document.getElementById('addCookieCruncher');
-// event listeners ened to know: what event do they care about, and what do they want to do when it happens.
+
+
 cookieCruncher.addEventListener('submit',
 function (event) {
   event.preventDefault();
@@ -102,6 +114,8 @@ function (event) {
   if (storeNames.includes(name.toLowerCase())){
     cookieCruncher.reset();
     alert ('You cannot enter an existing store name!');
+  } else if (minCookie >= maxCookie) {
+    alert('Your Minimum Cookies per Hour cannot be equal to or higher than your Maximum Cookies per Hour.');
   } else {
     render(newStore);
     storeNames.push(name.toLowerCase());
